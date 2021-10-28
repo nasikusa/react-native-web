@@ -391,7 +391,11 @@ const createDOMProps = (elementType, props) => {
   const { className, style } = styleResolver.resolve(reactNativeStyle, finalClassList);
 
   if (className != null && className !== '') {
-    domProps.className = className;
+    // もともと、古いバージョンでは props からの className のサポートがあったが、
+    // https://github.com/necolas/react-native-web/issues/1146
+    // の issue の通り、 v0.11 にて削除されたため、こちらを元に戻しています
+    // v0.10 に関しては、こちらを参照してください ( https://github.com/necolas/react-native-web/releases/tag/0.10.0 )
+    domProps.className = props.className ? `${props.className} ${className}` : className;
   }
 
   if (style) {

@@ -13,7 +13,9 @@ export const defaultProps = {
   nativeID: true,
   ref: true,
   suppressHydrationWarning: true,
-  testID: true
+  testID: true,
+  // className の props を許可するように変更
+  className: true,
 };
 
 export const accessibilityProps = {
